@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- name: adding users
   sudo: yes
   user: ansible
   tasks:
