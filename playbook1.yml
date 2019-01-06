@@ -1,5 +1,5 @@
 ---
-- hosts: webservers
+- hosts: local
   sudo: yes
   user: ansible
   tasks:
