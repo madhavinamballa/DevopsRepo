@@ -2,7 +2,7 @@
 - hosts: all
   sudo: yes
   user: ansible
-  task:
+  tasks:
   - name: add user
     user:
      name: "{{ item }}"
