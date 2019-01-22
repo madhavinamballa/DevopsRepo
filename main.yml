@@ -1,0 +1,9 @@
+---
+- hosts: local
+  user: jenkins
+  become: yes
+  become_method: sudo
+  tasks:
+  - name: 
+    debug:
+      msg: "hi dear "
