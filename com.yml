@@ -3,7 +3,9 @@
   user: jenkins
   sudo: yes
   gather_facts: no
-  shell: echo "hello" > /tmp/hello.text
-  args:
-    creates: /tmp/hello.text
+  tasks:
+    -name: testing shell command
+      shell: echo "hello" > /tmp/hello.text
+      args:
+        creates: /tmp/hello.text
 
