@@ -1,0 +1,9 @@
+--- 
+- hosts: local
+  user: jenkins
+  sudo: yes
+  gather_facts: no
+  shell: echo "hello" > /tmp/hello.text
+  args:
+    creates: /tmp/hello.text
+
