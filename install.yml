@@ -1,6 +1,6 @@
 ---
-- hosts: local
-  user: jenkins
+- hosts: all
+  user: ansible
   sudo: yes
   tasks:
     - name: dfdfnld
@@ -10,4 +10,9 @@
       with_items:
         - httpd
         - telnet
+    - name: start the service
+      service:
+        name: start appache
+        state: started
+        enabled: yes
 
