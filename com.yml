@@ -5,7 +5,7 @@
   gather_facts: no
   tasks:
     -name: testing shell command
-      shell: echo "hello" > /tmp/hello.text
-      args:
+     shell: echo "hello" > /tmp/hello.text
+     args:
         creates: /tmp/hello.text
 
