@@ -1,0 +1,8 @@
+---
+- hosts: local
+  user: jenkins
+  sudo: yes
+  tasks:
+  - name: 
+    debug:
+      msg: "hi dear "
