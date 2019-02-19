@@ -1,0 +1,43 @@
+peline { 
+    agent any  
+    tools {
+        maven 'Maven'
+        jdk 'java1.8'
+    }
+    stages { 
+        stage('initialize'){
+            steps {
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                    
+}
+        }
+        stage('clone and clean') { 
+            steps { 
+               echo 'This is a minimal pipeline.' 
+               sh 'pwd'
+               sh 'rm -rf DevopsRepo'
+               sh 'git clone https://github.com/madhavinamballa/DevopsRepo.git'
+               sh 'pwd'
+               sh 'cd /var/lib/jenkins/workspace/pipeline_build/DevopsRepo/madhavi_mvn '
+               sh 'pwd'
+               sh 'ls -al'
+               sh ' mvn -f DevopsRepo/madhavi_mvn/pom.xml package' 
+               
+               
+            }
+        }
+        stage('Deploy'){
+            steps{
+                sh 'cp /var/lib/jenkins/workspace/pipeline_build/DevopsRepo/madhavi_mvn/target/madhavi_mvn-1.0-SNAPSHOT.jar /var/lib/jenkins/artifacts'    
+            }
+        }
+        stage('Testing'){
+            steps{
+                sh 'cd /var/lib/jenkins/artifacts'
+                sh 'pwd'
+                sh 'java -cp /var/lib/jenkins/artifacts/madhavi_mvn-1.0-SNAPSHOT.jar madhavi.Application'
+            }
+        }
+    }
+}
