@@ -12,5 +12,4 @@ def rev2(s):
 	else:
 		retrun (rev(s)+s[0])
 if __name__ == "__main__":
-	s = raw_input("enter a stirng to be reversed \n")
 	print rev(s)
