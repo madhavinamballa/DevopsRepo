@@ -1,0 +1,26 @@
+def workspace;
+node
+{
+    stage('checkout')
+    {
+        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/madhavinamballa/DevopsRepo.git']]])
+        workspace = pwd()
+        
+    }
+    stage('static analysis')
+    {
+        echo "static analusis"
+    }
+    stage('build')
+    {
+        echo "build"
+    }
+    stage('Unit Testing')
+    {
+        echo "unit testing"
+    }
+    stage('delivery')
+    {
+        echo "delivery the code"
+    }
+}
