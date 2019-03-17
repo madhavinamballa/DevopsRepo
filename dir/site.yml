@@ -1,0 +1,9 @@
+---
+- hosts: all
+  user: ansible
+  become: yes
+  become_method: sudo
+  roles:
+  - jenkins
+  
+

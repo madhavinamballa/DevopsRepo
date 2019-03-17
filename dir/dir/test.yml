@@ -1,0 +1,13 @@
+---
+- hosts: all
+  user: ansible
+  become: yes
+  become_method: sudo
+  tasks:
+  - name: debug module
+    shell: cat /home/ansible/DevopsRepo/dir/test.yml
+    register: result
+  - name: print result
+    debug:
+     var: result.stdout
+ 

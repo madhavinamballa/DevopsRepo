@@ -1,0 +1,42 @@
+---
+# tasks file for jenkins
+- name: install java 8 using yum
+  yum:
+   name: "{{ java.VERSION }}"
+   state: present
+- name: correct the alternatives to change default java version
+  alternatives:
+   name: java
+   link: /bin/java
+   path: "{{ java.ALTERNATIVES }}"
+- name: Download jenkins repo and yum URL for Redhat
+  get_url:
+   url: "{{jenkins.repo_URL }}"
+   dest: /etc/yum.repos.d/jenkins.repo
+- name: import GPG key
+  rpm_key:
+   state: present
+   key: "{{ jenkins.gpg_key }}"
+- name: Install jenkins
+  yum:
+   name: jenkins
+   state: present
+- name: start jenkins
+  systemd:
+    name: jenkins
+    state: started
+- name: enable jenkins
+  systemd:
+    name: jenkins
+    enabled: true
+
+- name: sleep for 30 seconds and continue with play
+  wait_for: timeout=30
+  delegate_to: localhost
+- name: init password jenkins
+  shell: cat /var/lib/jenkins/secrets/initialAdminPassword
+  changed_when: false
+  register: result
+- name: print init password
+  debug:
+   var: result.stdout
