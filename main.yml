@@ -7,3 +7,8 @@
   - name: 
     debug:
       msg: "hi dear "
+  - name: touch a file
+    file:
+     name: female.txt
+     state: touch
+     
