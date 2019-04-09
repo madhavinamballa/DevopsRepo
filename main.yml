@@ -9,6 +9,6 @@
       msg: "hi dear "
   - name: touch a file
     file:
-     name: iim.txt
+     name: bi.txt
      state: touch
      
