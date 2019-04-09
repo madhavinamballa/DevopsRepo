@@ -1,0 +1,11 @@
+---
+- name: install cronie package
+  yum:
+    name: cronie
+    state: installed
+  tags: 
+    - cronie
+- name: intall yum-cron package
+  yum: 
+    name: yum-cron 
+    state: installed

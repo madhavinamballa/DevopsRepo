@@ -1,0 +1,9 @@
+---
+- name: enable cron service
+  service: name=crond state=started enabled=yes
+  tags:
+    - cron_service
+- name: enable yum-cron service
+  service: name=yum-cron state=started enabled=yes
+  tags: 
+   - yum-cron-service

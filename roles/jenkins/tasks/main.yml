@@ -1,0 +1,45 @@
+---
+# tasks file for jenkins
+- name: Install openJDK
+  yum: 
+   name: java-1.8.0-openjdk 
+   state: installed
+   update_cache: yes
+- name: add jenkins repo
+  get_url:
+     url:  http://pkg.jenkins-ci.org/redhat/jenkins.repo
+     dest: /etc/yum.repos.d/jenkins.repo
+- name: import jenkins key
+  rpm_key:
+    key: https://jenkins-ci.org/redhat/jenkins-ci.org.key
+    state: present
+- name: install jenkins
+  yum: 
+   name: jenkins
+   state: installed
+   update_cache: yes
+- name: statrt jenkins
+  systemd: 
+   name: jenkinds
+   state: started
+   enabled: yes
+- name: install EPEL
+  yum:
+   name: epel-release 
+   state: installed
+- name: install nginx
+  yum:
+   name: nginx
+   state: installed
+   update_cache: yes
+- name: copy nginx.conf
+  template:
+   src: nginx.conf.j2
+   dest: /etc/nginx/nginx.conf
+- name: start nginx
+  systemd:
+   name: nginx
+   state: started
+   enabled: yes
+
+

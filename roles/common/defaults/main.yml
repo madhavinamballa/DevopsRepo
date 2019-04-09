@@ -1,0 +1,8 @@
+---
+# defaults file for common
+inventory: all
+user: ansible
+updateOption: security
+emailTo: admin@example.com
+connectTo: mail.example.com
+host_name: "{{ ansible_hostname }}"
