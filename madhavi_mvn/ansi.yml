@@ -1,0 +1,10 @@
+---
+- hosts: local
+  user: ansible
+  become: yes
+  become_method: sudo
+  tasks:
+  - name: copy jar file 
+    copy:    
+      src:  /home/ansible/DevopsRepo/madhavi_mvn/target/madhavi_mvn-1.0-SNAPSHOT.jar 
+      dest: /tmp/mnvjar
